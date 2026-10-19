@@ -67,6 +67,10 @@ class Training:
             shuffle=True,
             **dataflow_kwargs
         )
+        print("Class indices:", self.train_generator.class_indices)
+        print("Number of classes:", self.train_generator.num_classes)
+        
+        
 
     @staticmethod
     def save_model(path: Path, model: tf.keras.Model):
@@ -80,6 +84,7 @@ class Training:
             epochs=self.config.params_epochs,
             callbacks=callback_list
         )
+        
 
         self.save_model(
             path=self.config.trained_model_path,
